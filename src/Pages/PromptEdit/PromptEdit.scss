@@ -1,0 +1,97 @@
+.containerEdit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+
+  &__box {
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+    box-shadow: 0 4px 12px rgba(82, 65, 155, 0.593);
+    border-radius: 1rem;
+    padding: 1.25rem;
+    width: 70%;
+
+    h2 {
+      text-align: center;
+      margin-bottom: 1.25rem;
+    }
+
+    &__group {
+      margin-bottom: 0.9375rem;
+
+      label {
+        display: block;
+        margin-bottom: 0.3125rem;
+      }
+
+      input,
+      textarea,
+      select {
+        width: 90%;
+        padding: 0.5rem;
+        font-size: 0.875rem;
+        border: 1px solid #ccc;
+        border-radius: 0.25rem;
+      }
+    }
+
+    &__respont {
+      background-color: #ffffff;
+      box-shadow: 0 4px 12px rgba(82, 65, 155, 0.593);
+      padding: 0.625rem;
+      border-radius: 0.3125rem;
+      margin-bottom: 1.25rem;
+      width: 95%;
+
+      &__group {
+        margin-bottom: 0.9375rem;
+        width: 95%;
+
+        label {
+          display: block;
+          margin-bottom: 0.3125rem;
+        }
+
+        input,
+        textarea {
+          width: 100%;
+          padding: 0.5rem;
+          font-size: 0.875rem;
+          border: 1px solid #cfcdcd;
+          border-radius: 0.25rem;
+        }
+      }
+    }
+
+    &__buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 1.25rem;
+    }
+  }
+
+  button {
+    width: 100%;
+    padding: 6px 12px;
+    font-size: 12px;
+    border: none;
+    background-color: #007bff; /* Color de fondo azul (#007bff) */
+    color: #fff; /* Letras blancas */
+    cursor: pointer;
+    margin-right: 5px;
+    border-radius: 4px; /* Borde redondeado */
+    margin: 4px; /* Espacio uniforme en los cuatro lados */
+  }
+  
+
+  button:hover {
+    background-color: #555;
+  }
+  
+  button.disabledButton {
+    opacity: 0.5; /* Reduce la opacidad para dar la apariencia de deshabilitado */
+    cursor: not-allowed; /* Cambia el cursor a 'not-allowed' cuando el botón está deshabilitado */
+    /* Puedes agregar otros estilos que consideres necesarios para reflejar el aspecto de un botón deshabilitado */
+  }
+}

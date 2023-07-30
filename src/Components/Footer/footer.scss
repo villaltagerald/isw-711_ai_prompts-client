@@ -1,0 +1,16 @@
+.footer {
+  text-align: center;
+  background-image: linear-gradient(to bottom right, #b0c2b472, #193fea47);
+  width: 100%;
+  height: 3rem;
+  padding: 0 0%;
+  position: fixed;
+  bottom: 0;
+  color: rgb(34, 9, 143);
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+main {
+  margin-bottom: 3rem; /* la misma altura que el footer */
+}

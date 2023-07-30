@@ -1,0 +1,57 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 80%;
+  margin: 0 auto;
+
+  h2 {
+    margin-bottom: 1.25rem;
+  }
+
+  &__registration {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+
+    &__group {
+      margin-bottom: 0.9375rem;
+
+      label {
+        display: block;
+        margin-bottom: 0.3125rem;
+      }
+
+      input {
+        width: 100%;
+        padding: 0.5rem;
+        font-size: 0.875rem;
+        border: 1px solid #ccc;
+        border-radius: 0.25rem;
+      }
+    }
+
+    button {
+      width: 100%;
+      padding: 6px 12px;
+      font-size: 14px;
+      border: none;
+      background-color: #007bff;
+      /* Color de fondo azul (#007bff) */
+      color: #fff;
+      /* Letras blancas */
+      cursor: pointer;
+      margin-right: 5px;
+      border-radius: 4px;
+      /* Borde redondeado */
+      margin: 4px;
+      /* Espacio uniforme en los cuatro lados */
+    }
+
+    button:hover {
+      background-color: #555;
+    }
+  }
+}

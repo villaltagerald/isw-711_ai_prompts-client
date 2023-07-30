@@ -1,0 +1,44 @@
+/* Estilos para el recuadro */
+.user__view {
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 12px rgba(82, 65, 155, 0.593);
+    border-radius: 4px;
+    padding: 20px;
+    width: 70%;
+    /* O ajusta el ancho máximo según tus necesidades */
+    margin: 0 auto;
+    margin-left: 20%;
+
+    &__form {
+
+        /* Esto centra el recuadro horizontalmente */
+        &__group {
+            margin-bottom: 3%;
+            display: flex;
+            /* Para colocar elementos en una misma línea */
+            align-items: center;
+
+            /* Centrar verticalmente los elementos */
+            label {
+                display: block;
+                margin-bottom: 1%;
+                width: 7rem;
+            }
+
+            input[type="text"],
+            input[type="email"] {
+                width: 20rem;
+                padding: 8px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+
+            input[type="checkbox"] {
+                width: 1rem;
+                padding: 8px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
+        }
+    }
+}

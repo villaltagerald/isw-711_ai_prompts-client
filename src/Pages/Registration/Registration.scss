@@ -1,0 +1,41 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+
+    h2 {
+        margin-bottom: 1.25rem;
+    }
+
+    &__registration {
+        background-color: #ffffff;
+        border: 1px solid #ffffff;
+        border-radius: 1rem;
+        box-shadow: 0 4px 12px rgba(82, 65, 155, 0.593);
+        padding: 1.25rem;
+        width: 90%;
+
+        &__group {
+            margin-bottom: 0.9375rem;
+
+
+            label {
+                display: block;
+                margin-bottom: 0.3125rem;
+            }
+
+            input {
+                width: 90%;
+                padding: 0.5rem;
+                font-size: 0.875rem;
+                border: 1px solid #ccc;
+                border-radius: 0.25rem;
+            }
+        }
+    }
+}
+  
+  
+  
