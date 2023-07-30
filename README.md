@@ -1,5 +1,6 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -169,3 +170,6 @@ If you have run out of energy or time for your project, put a note at the top of
 >>>>>>> 0d7c0d4b1029b4f55106d561a4c079bf6a68dddd
 =======
 >>>>>>> 5d303cbfa7930d66cea6f6b4dfc427b49dbdc960
+=======
+# isw-711_ai_prompts-client
+>>>>>>> 8e9c64f77e2fb84856ab338b34ac1210c8919a05
