@@ -77,7 +77,7 @@ export const UserProfile = () => {
                 </div>
                 <div className="container__registration__group">
                     <label htmlFor="phone">Phone:</label>
-                    <input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleChange} required={formData.two_fa} />
+                    <input type="tel" id="phone" name="phone" pattern="[0-9]{4}[0-9]{4}"  title="Formato requerido: 12345678" value={formData.phone} onChange={handleChange} required={formData.two_fa} />
                 </div>
                 <div className="container__registration__group">
                     <label htmlFor="password">Password:</label>
