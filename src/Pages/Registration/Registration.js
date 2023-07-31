@@ -13,7 +13,6 @@ export function Registration() {
     last_name: '',
     password: '',
     repeatPassword: '',
-    varified: false,
   });
 
   const userCreated = () => {

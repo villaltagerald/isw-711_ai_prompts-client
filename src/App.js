@@ -14,6 +14,7 @@ import { NewUser } from './Pages/NewUser/NewUser';
 import { UserViews } from './Pages/UserViews/UserViews';
 import { UserView } from './Pages/UserView/UserView';
 import { UserEdit } from './Pages/UserEdit/UserEdit';
+import { UserProfile } from './Pages/UserProfile/UserProfile';
 //COMPONENTES DE PROMPTS
 import { PromptViews } from './Pages/PromptViews/PromptViews';
 import { PromptCreate } from './Pages/PromptCreate/PromptCreate';
@@ -63,6 +64,7 @@ function App() {
   const PrivatePromptView = requireAuth({ Component: PromptView, role: ['prompts'] });
   const PrivatePromptCreate = requireAuth({ Component: PromptCreate, role: ['prompts'] });
   const PrivatePromptEdit = requireAuth({ Component: PromptEdit, role: ['prompts'] });
+  const PrivateUserProfile = requireAuth({ Component: UserProfile, role: ['prompts'] });
 
   const PublicLogin = PublicRoute(Login);
   const PublicRegistration =PublicRoute(Registration);
@@ -88,6 +90,10 @@ function App() {
         {
           path: "/usernew",
           element: <PrivateNewUser />,
+        },
+        {
+          path: "/userprofile",
+          element: <PrivateUserProfile />,
         },
         {
           path: "/promptviews",

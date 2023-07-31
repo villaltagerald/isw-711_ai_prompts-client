@@ -28,6 +28,9 @@ const Navigation = () => {
           <li>
             <Link to="/login" className="nav__item__link" onClick={handleLogout}>Exit</Link>
           </li>
+          <li>
+            <Link to="/userprofile" className="nav__item__link" >Profile</Link>
+          </li>
         </ul>
       )}
 
@@ -41,6 +44,9 @@ const Navigation = () => {
           </li>
           <li>
             <Link to="/login" className="nav__item__link" onClick={handleLogout}>Exit</Link>
+          </li>
+          <li>
+            <Link to="/userprofile" className="nav__item__link" >Profile</Link>
           </li>
         </ul>
       )}
