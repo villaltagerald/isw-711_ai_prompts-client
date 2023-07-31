@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from "react-router-dom";
 
 import { UserGetProfile } from '../../Datos/User/UserGetProfile';
 import { UserPatch } from '../../Datos/User/UserPatch';
-import RegistrationForm from '../../Components/RegistrationForm/RegistrationForm';
 import './UserProfile.scss';
 
 export const UserProfile = () => {
-    
+
     const [formData, setFormData] = useState({
-        _id:"",
+        _id: "",
         email: '',
         first_name: '',
         last_name: '',
@@ -18,6 +16,19 @@ export const UserProfile = () => {
         phone: "",
         two_fa: false,
     });
+
+    // Uso de la función userGet
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const userResponse = await UserGetProfile();
+                setFormData(userResponse);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        fetchData();
+    }, []);
 
     function userEdit() {
         alert('User edit');
@@ -46,18 +57,6 @@ export const UserProfile = () => {
         //setVarified(newStatus);
     };
 
-    // Uso de la función userGet
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const userResponse = await UserGetProfile();
-                setFormData(userResponse);
-            } catch (error) {
-                console.log(error);
-            }
-        };
-        fetchData();
-    }, []);
 
     return (
         <div className='container'>
@@ -77,15 +76,15 @@ export const UserProfile = () => {
                 </div>
                 <div className="container__registration__group">
                     <label htmlFor="phone">Phone:</label>
-                    <input type="tel" id="phone" name="phone" pattern="[0-9]{4}[0-9]{4}"  title="Formato requerido: 12345678" value={formData.phone} onChange={handleChange} required={formData.two_fa} />
+                    <input type="tel" id="phone" name="phone" pattern="[0-9]{4}[0-9]{4}" title="Formato requerido: 12345678" value={formData.phone || ""} onChange={handleChange} required={formData.two_fa} />
                 </div>
                 <div className="container__registration__group">
                     <label htmlFor="password">Password:</label>
-                    <input type="password" id="password" name="password" value={formData.password} onChange={handleChange}  />
+                    <input type="password" id="password" name="password" value={formData.password || ""} onChange={handleChange} />
                 </div>
                 <div className="container__registration__group">
                     <label htmlFor="repeatPassword">Repeat Password:</label>
-                    <input type="password" id="repeatPassword" name="repeatPassword" value={formData.repeatPassword} onChange={handleChange} />
+                    <input type="password" id="repeatPassword" name="repeatPassword" value={formData.repeatPassword || ""} onChange={handleChange} />
                 </div>
                 <div className="registration__box__status">
                     <label htmlFor="statusCheckbox">Two authentication factors:</label>
