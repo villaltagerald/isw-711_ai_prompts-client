@@ -9,12 +9,14 @@ import Unauthorized from './Pages/Unauthorized/Unauthorized';
 //COMPONENTES GENERALES
 import { Registration } from './Pages/Registration/Registration';
 import { Login } from './Pages/Login/Login';
-//COMPONENTES DE USUERIOS
+//COMPONENTES DE USUARIOS
 import { NewUser } from './Pages/NewUser/NewUser';
 import { UserViews } from './Pages/UserViews/UserViews';
 import { UserView } from './Pages/UserView/UserView';
 import { UserEdit } from './Pages/UserEdit/UserEdit';
 import { UserProfile } from './Pages/UserProfile/UserProfile';
+import { Verification } from './Pages/Verification/Verification';
+import { RegistrationSuccess } from './Pages/RegistrationSuccess/RegistrationSuccess';
 //COMPONENTES DE PROMPTS
 import { PromptViews } from './Pages/PromptViews/PromptViews';
 import { PromptCreate } from './Pages/PromptCreate/PromptCreate';
@@ -68,6 +70,8 @@ function App() {
 
   const PublicLogin = PublicRoute(Login);
   const PublicRegistration =PublicRoute(Registration);
+  const PublicRegistrationSuccess =PublicRoute(RegistrationSuccess);
+  const PublicVerification =PublicRoute(Verification);
   
   const router = createBrowserRouter([
     {
@@ -116,10 +120,17 @@ function App() {
     {
       path: "/signup",
       element: <PublicRegistration />,
+    },{
+      path: "/signup_successfully",
+      element: <PublicRegistrationSuccess />,
     },
     {
       path: "/login",
       element: <PublicLogin />,
+    },
+    {
+      path: "verification/:validationCode",
+      element: <PublicVerification />,
     },
     {
       path: "/unauthorized",

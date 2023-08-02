@@ -86,9 +86,9 @@ export const UserProfile = () => {
                     <label htmlFor="repeatPassword">Repeat Password:</label>
                     <input type="password" id="repeatPassword" name="repeatPassword" value={formData.repeatPassword || ""} onChange={handleChange} />
                 </div>
-                <div className="registration__box__status">
-                    <label htmlFor="statusCheckbox">Two authentication factors:</label>
-                    <input type="checkbox" id="statusCheckbox" checked={formData.two_fa === true} onChange={handleStatusChange} />
+                <div className="registration__box__twofa">
+                    <label htmlFor="two_fa">Two authentication factors:</label>
+                    <input type="checkbox" id="two_fa" name='two_fa' checked={formData.two_fa === true} onChange={handleStatusChange} />
                     {formData.two_fa === true ? 'Active' : 'Inactive'}
                 </div>
                 <button type="submit">Update</button>

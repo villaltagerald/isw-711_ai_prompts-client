@@ -11,6 +11,7 @@ export function NewUser() {
     email: '',
     first_name: '',
     last_name: '',
+    phone: '',
     password: '',
     repeatPassword: '',
     varified: false,
@@ -22,6 +23,7 @@ export function NewUser() {
       email: '',
       first_name: '',
       last_name: '',
+      phone: '',
       password: '',
       repeatPassword: '',
       varified: false,
@@ -36,22 +38,25 @@ export function NewUser() {
     }));
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    UserPost(formData, userCreated);///ENVIA LA SOLICITUD AL API
-    //console.log(formData);
-  }
-//CAPTURA LOS CAMBIOS EN EL OBJETO
+  //CAPTURA LOS CAMBIOS EN EL OBJETO
   const handleStatusChange = (e) => {
+    const { name, checked } = e.target;
     setFormData((prevFormData) => ({
       ...prevFormData,
-      varified: e.target.checked ? true : false,
+      [name]: checked,
     }));
     //const newStatus = e.target.checked ? true : false;
     //setVarified(newStatus);
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    UserPost(formData, userCreated);///ENVIA LA SOLICITUD AL API
+    //console.log(formData);
+  }
+
+
   return (
-    <RegistrationForm titulo={"Add User"} handleSubmit={handleSubmit} handleChange={handleChange} handleStatusChange={handleStatusChange} formData={formData} required={true}/>
+    <RegistrationForm titulo={"Add User"} handleSubmit={handleSubmit} handleChange={handleChange} handleStatusChange={handleStatusChange} formData={formData} required={true} />
   );
 }

@@ -13,6 +13,7 @@ export function UserEdit() {
     email: '',
     first_name: '',
     last_name: '',
+    phone: '',
     password: '',
     repeatPassword: '',
     varified: false,
@@ -47,18 +48,17 @@ export function UserEdit() {
     event.preventDefault();
     UserPatch(userId, formData, userEdit);
     //console.log(formData);
-  }
+  };
 
   const handleStatusChange = (e) => {
+    const { name, checked } = e.target;
     setFormData((prevFormData) => ({
       ...prevFormData,
-      varified: e.target.checked ? true : false,
+      [name]: checked,
     }));
-    //const newStatus = e.target.checked ? true : false;
-    //setVarified(newStatus);
   };
 
   return (
-    <RegistrationForm titulo={"Edit User"} handleSubmit={handleSubmit} handleChange={handleChange} handleStatusChange={handleStatusChange} formData={formData} required={false}/>
+    <RegistrationForm titulo={"Edit User"} handleSubmit={handleSubmit} handleChange={handleChange} handleStatusChange={handleStatusChange} formData={formData} required={false} />
   );
 }
