@@ -86,7 +86,7 @@ export function PromptCreate() {
                     <CheckBox formData={promptData} setFormData={setPromptData} />
                     <div className="input-group mb-3">
                         <label className="input-group-text">Type:</label>
-                        <select class="form-select" id="type" name="type" value={promptData.type} onChange={handleChange} required >
+                        <select className="form-select" id="type" name="type" value={promptData.type} onChange={handleChange} required >
                             <option value="">Select type</option>
                             <option value="Edit">Edit</option>
                             <option value="Images">Image</option>
@@ -114,7 +114,7 @@ export function PromptCreate() {
                         <div>
                             <div className="input-group mb-3">
                                 <label className="input-group-text">Image Size:</label>
-                                <select class="form-select" id="imagesize" name="imagesize" value={question.imagesize} onChange={handleChangeQuestion} required >
+                                <select className="form-select" id="imagesize" name="imagesize" value={question.imagesize} onChange={handleChangeQuestion} required >
                                     <option value="">Select image size</option>
                                     <option value="256x256">256x256</option>
                                     <option value="512x512">512x512</option>

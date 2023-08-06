@@ -21,10 +21,10 @@ const Navigation = () => {
     {userRole === 'users' && (
       <ul>
         <li>
-          <Link to="/" className="nav__item__link"><i class="fa-solid fa-house fa-2xl" style={{color: "#ffffff",}}></i></Link>
+          <Link to="/" className="nav__item__link"><i className="fa-solid fa-house fa-2xl" style={{color: "#ffffff",}}></i></Link>
         </li>
         <li>
-          <Link to="/userviews" className="nav__item__link"><i class="fa-solid fa-user-pen fa-2xl" style={{color: "#ffffff",}}></i> </Link>
+          <Link to="/userviews" className="nav__item__link"><i className="fa-solid fa-user-pen fa-2xl" style={{color: "#ffffff",}}></i> </Link>
         </li>
         <li>
           <Link to="/login" className="nav__item__link" onClick={handleLogout}><i className="fas fa-sign-out-alt fa-2xl" style={{color: "#ffffff",}}></i></Link>
@@ -35,7 +35,7 @@ const Navigation = () => {
     {userRole === 'prompts' && (
       <ul>
         <li>
-          <Link to="/" className="nav__item__link"><i class="fa-solid fa-house fa-2xl" style={{color: "#ffffff",}} ></i> </Link>
+          <Link to="/" className="nav__item__link"><i className="fa-solid fa-house fa-2xl" style={{color: "#ffffff",}} ></i> </Link>
         </li>
         <li>
           <Link to="/promptviews" className="nav__item__link"><i className="fas fa-pencil-alt fa-2xl" style={{color: "#ffffff",}}></i> </Link>

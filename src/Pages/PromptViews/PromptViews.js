@@ -40,12 +40,12 @@ export function PromptViews() {
     }
     return (
         <div className="container_table">
-            <nav class="navbar bg-body-tertiary">
-                <div class="container-fluid">
-                    <button onClick={() => navigate(`/promptnew`)}><i class="fa-solid fa-file-circle-plus fs-xl" style={{color: '#ffffff',}}/></button>
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                        <button class="btn btn-outline-success" type="submit">Search</button>
+            <nav className="navbar bg-body-tertiary">
+                <div className="container-fluid">
+                    <button onClick={() => navigate(`/promptnew`)}><i className="fa-solid fa-file-circle-plus fs-xl" style={{color: '#ffffff',}}/></button>
+                    <form className="d-flex" role="search">
+                        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                        <button className="btn btn-outline-success" type="submit">Search</button>
                     </form>
                 </div>
             </nav>

@@ -223,7 +223,7 @@ export function PromptEdit() {
                 <div>
                   <div className="input-group mb-3">
                     <label className="input-group-text">Image Size:</label>
-                    <select class="form-select" id="imagesize" name="imagesize" value={question.imagesize} onChange={(e) => handleChangeResponse(e, question._id)} disabled={question.response && question.response.length > 0}  >
+                    <select className="form-select" id="imagesize" name="imagesize" value={question.imagesize} onChange={(e) => handleChangeResponse(e, question._id)} disabled={question.response && question.response.length > 0}  >
                       <option value="">Select image size</option>
                       <option value="256x256">256x256</option>
                       <option value="512x512">512x512</option>
@@ -290,7 +290,7 @@ export function PromptEdit() {
             <div>
               <div className="input-group mb-3">
                 <label className="input-group-text">Image Size:</label>
-                <select class="form-select" id="imagesize" name="imagesize" value={question.imagesize} onChange={handleChangeQuestion}  >
+                <select className="form-select" id="imagesize" name="imagesize" value={question.imagesize} onChange={handleChangeQuestion}  >
                   <option value="">Select image size</option>
                   <option value="256x256">256x256</option>
                   <option value="512x512">512x512</option>

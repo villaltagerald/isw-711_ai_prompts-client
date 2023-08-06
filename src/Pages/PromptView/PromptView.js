@@ -49,18 +49,15 @@ export const PromptView = () => {
             <input className="form-control" type="text" id="type" name="type" value={promptData.type} readOnly />
           </div>
           <div className="container__box__tags">
-            {promptData.tags.map((tag, index) => (
-              <div key={index} className="container__box__tags__tag">
-                <p>{tag.tagId}</p>
-                <div className="container__box__tags__tag__sub">
-                  {tag.subTags.map((subTag, subIndex) => (
-                    <span key={subIndex} className="container__box__tags__tag__sub">
-                      {subTag}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
+            <div className="card border-light mb-3">
+              <div className="card-header">Tags</div>
+              <div className="card-body">
+                {promptData.tags.map((tag) => (
+                  <div key={tag} className="container__box__tags__tag">
+                    {tag}
+                  </div>
+                ))}</div>
+            </div>
           </div>
           {promptData.questions.map((question, index) => (
             <div className="container__box__respont" key={index}>
@@ -113,7 +110,7 @@ export const PromptView = () => {
             </div>
           ))}
         </form>
-      </div>
-    </div>
+      </div >
+    </div >
   );
 };
