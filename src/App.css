@@ -1,3 +1,6 @@
+/* app.css (o cualquier archivo de estilo) */
+@import '~@fortawesome/fontawesome-free/css/all.css';
+
 .App {
   text-align: center;
 }

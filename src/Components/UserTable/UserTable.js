@@ -6,7 +6,7 @@ import Spinner from '../Spinner/Spinner';
 const UserTable = ({users, onView, onEdit, onDelete}) => {
   return (
   <div>{users?(
-    <table className="user__table">
+    <table class="table table-striped">
       <thead>
         <tr>
           <th>Name</th>
@@ -20,11 +20,11 @@ const UserTable = ({users, onView, onEdit, onDelete}) => {
           <tr key={index}>
             <td>{user.first_name+" "+user.last_name}</td>
             <td>{user.email}</td>
-            <td>{user.varified?<span>Verificado</span>:<span>Sin Verificado</span>}</td>
+            <td>{user.varified?<i class="fa-solid fa-square-check" style={{color: '#0a5ae6',}}></i>:<i class="fa-solid fa-square-xmark" style={{color: '#0a5ae6',}}></i>}</td>
             <td>
-              <button onClick={() => onView(user._id)}>Vista</button>
-              <button onClick={() => onEdit(user._id)}>Editar</button>
-              <button onClick={() => onDelete(user._id)}>Eliminar</button>
+              <button onClick={() => onView(user._id)}><i class="fa-solid fa-eye" style={{color: '#ffffff',}}></i></button>
+              <button onClick={() => onEdit(user._id)}><i class="fa-solid fa-pen-to-square" style={{color: '#ffffff',}}></i></button>
+              <button onClick={() => onDelete(user._id)}><i class="fa-solid fa-trash" style={{color: '#ffffff',}}></i></button>
             </td>
           </tr>
         ))}

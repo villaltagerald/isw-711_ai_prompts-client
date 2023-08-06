@@ -1,105 +1,41 @@
 import React, { useState, useEffect } from 'react';
 import './ChecBox.scss';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export function CheckBox({ formData, setFormData }) {
-
     const [selectedTags, setSelectedTags] = useState([]);
+    const tags = ["Programación", "Inteligencia Artificial", "Ciberseguridad", "Big Data", "Redes", "Cardiología", "Dermatología", "Neurología", "Pediatria", "Cirugía", "Matemáticas", "Historia", "Ciencias", "Idiomas", "Arte"];
 
-    useEffect(() => {
-        const combinedTags = formData.tags && formData.tags.flatMap(tag => [tag.tagId, ...tag.subTags]);
-        setSelectedTags(combinedTags);
-    }, [formData.tags]);
-
-    const tags = [
-        {
-            "id": "Tecnologia",
-            "subTags": [
-                "Programación",
-                "Inteligencia Artificial",
-                "Ciberseguridad",
-                "Big Data",
-                "Redes"
-            ]
-        },
-        {
-            "id": "Medicina",
-            "subTags": [
-                "Cardiología",
-                "Dermatología",
-                "Neurología",
-                "Pediatria",
-                "Cirugía"
-            ]
-        },
-        {
-            "id": "Educacion",
-            "subTags": [
-                "Matemáticas",
-                "Historia",
-                "Ciencias",
-                "Idiomas",
-                "Arte"
-            ]
-        }
-    ];
-
-//FUNCION PARA ALMACENAR LOS TAGS SELECCIONADOS
-    const handleCheckboxChange = (tagId, subTag) => {
-        let tagOpcion = subTag ? subTag : tagId
-        if (selectedTags.includes(tagOpcion)) {//ID TAGS EXISTE
-            setSelectedTags(selectedTags.filter((id) => id !== tagOpcion));
-            let updatedTags = [...formData.tags];
-            const existingTagIndex = updatedTags.findIndex((tag) => tag.tagId === tagId);//BUSCA ID TAGS EN EL OBJETO PRINCIPAL
-            if (existingTagIndex !== -1 && !subTag) {
-                updatedTags = updatedTags.filter((tag) => tag.tagId !== tagId);//ELIMINA ID TAGS SI EXITE
-            } if (existingTagIndex !== -1 && subTag) {
-                updatedTags[existingTagIndex].subTags = updatedTags[existingTagIndex].subTags.filter((subtag) => subtag !== subTag);//ELIMINA  SUB TAGS SI EXITE
-            }
-            setFormData((prevFormData) => ({
-                ...prevFormData,
-                tags: updatedTags,
-            }));
-        } else {//GUARADAR ID TAGS SINO EXISTE
-            setSelectedTags([...selectedTags, tagOpcion]);
-            let updatedTags = [...formData.tags]; // Crea una copia del arreglo formData.tags
-            const existingTagIndex = updatedTags.findIndex((tag) => tag.tagId === tagId);
-            if (existingTagIndex !== -1) {
-                updatedTags[existingTagIndex].subTags.push(subTag);//GUARADA EL SUB TAG
-            } else {
-                updatedTags.push({
-                    tagId: tagId,
-                    subTags: [],
-                });
-            }
-            setFormData((prevFormData) => ({
-                ...prevFormData,
-                tags: updatedTags,
-            }));
+    const handleTagSelect = (event) => {
+        const selectedTag = event.target.value;
+        if (!selectedTags.includes(selectedTag)) {
+            setSelectedTags([...selectedTags, selectedTag]);
         }
     };
-    return (<div><p>Tags</p>
-        <div className="checkbox__container">
-            {tags && tags.map((tag) => (
-                <div key={tag.id} className="checkbox__container__tag">
-                    <label>
-                        <input type="checkbox" checked={selectedTags && selectedTags.includes(tag.id)} onChange={() => handleCheckboxChange(tag.id)} />
-                        {tag.id}
-                    </label>
-                    {selectedTags && selectedTags.includes(tag.id) && (
-                        <ul className="checkbox__container__tag__sub">
-                            {tag.subTags.map((subTag) => (
-                                <li key={subTag}>
-                                    <label>
-                                        <input type="checkbox" checked={selectedTags && selectedTags.includes(subTag)} onChange={() => handleCheckboxChange(tag.id, subTag)} />
-                                        {subTag}
-                                    </label>
-                                </li>
-                            ))}
-                        </ul>
-                    )}
-                </div>
-            ))}
+
+    const handleTagRemove = (tagToRemove) => {
+        setSelectedTags(selectedTags.filter((tag) => tag !== tagToRemove));
+    };
+
+    return (
+        <div className="selector">
+            <span>Tags</span>
+            <select className="selector__combobox" onChange={handleTagSelect}>
+                <option value="">Selecciona un tag</option>
+                {tags.map((tag) => (
+                    <option key={tag} value={tag}>
+                        {tag}
+                    </option>
+                ))}
+            </select>
+            <div className="selector__tags">
+                {selectedTags.map((tag) => (
+                    <div key={tag} className="selector__tags__tag">
+                        {tag}
+                        <span className="selector__tags__tag__closebtn" onClick={() => handleTagRemove(tag)}>&times;</span>
+                    </div>
+                ))}
+            </div>
         </div>
-    </div>
     );
 }

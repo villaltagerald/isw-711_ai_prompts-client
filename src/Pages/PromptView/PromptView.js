@@ -22,7 +22,7 @@ export const PromptView = () => {
     questions: question
   });
 
-//HACE LA CONSULTA AL API AL REDERIZAR
+  //HACE LA CONSULTA AL API AL REDERIZAR
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -40,13 +40,13 @@ export const PromptView = () => {
       <div className="container__box">
         <h2>View Prompt</h2>
         <form>
-          <div className="container__box__group">
-            <label htmlFor="name">Name:</label>
-            <input type="text" id="name" name="name" value={promptData.name} readOnly />
+          <div className="input-group mb-3">
+            <label className="input-group-text">Name:</label>
+            <input className="form-control" type="text" id="name" name="name" value={promptData.name} readOnly />
           </div>
-          <div className="container__box__group">
-            <label htmlFor="type">Type:</label>
-            <input type="text" id="type" name="type" value={promptData.type} readOnly />
+          <div className="input-group mb-3">
+            <label className="input-group-text">Type:</label>
+            <input className="form-control" type="text" id="type" name="type" value={promptData.type} readOnly />
           </div>
           <div className="container__box__tags">
             {promptData.tags.map((tag, index) => (
@@ -64,47 +64,46 @@ export const PromptView = () => {
           </div>
           {promptData.questions.map((question, index) => (
             <div className="container__box__respont" key={index}>
-              <div className="container__box__respont__group" key={index}>
-                <label htmlFor="responseCount">Response Count:</label>
-                <input type="number" id="responseCount" name="responseCount" value={question.responseCount} readOnly />
-
-                {promptData.type === 'Edit' && (
-                  <div>
-                    <div className="container__box__respont__group">
-                      <label htmlFor="temperature">Temperature:</label>
-                      <input type="number" id="temperature" name="temperature" value={question.temperature} readOnly />
-                    </div>
-                    <div className="container__box__respont__group">
-                      <label htmlFor="input">Input:</label>
-                      <textarea id="input" name="input" value={question.input} readOnly />
-                    </div>
-                  </div>
-                )}
-
-                {promptData.type === 'Images' && (
-                  <div>
-                    <div className="container__box__respont__group">
-                      <label htmlFor="imageSize">Image Size:</label>
-                      <input type="text" id="imageSize" name="imageSize" value={question.imagesize} readOnly />
-                    </div>
-                  </div>
-                )}
-
-                <div className="container__box__respont__group">
-                  <label htmlFor="instruction">Instruction:</label>
-                  <textarea id="instruction" name="instruction" value={question.instruction} readOnly />
-                </div>
+              <div className="input-group mb-3" key={index}>
+                <label className="input-group-text">Response Count:</label>
+                <input className="form-control" type="number" id="responseCount" name="responseCount" value={question.responseCount} readOnly />
               </div>
-              {question.response && question.response.length > 0 ? <div className="container__box__group">
+              {promptData.type === 'Edit' && (
+                <div>
+                  <div className="input-group mb-3">
+                    <label className="input-group-text">Temperature:</label>
+                    <input className="form-control" type="number" id="temperature" name="temperature" value={question.temperature} readOnly />
+                  </div>
+                  <div className="input-group mb-3">
+                    <label className="input-group-text">Input:</label>
+                    <textarea className="form-control" id="input" name="input" value={question.input} readOnly />
+                  </div>
+                </div>
+              )}
+
+              {promptData.type === 'Images' && (
+                <div>
+                  <div className="input-group mb-3">
+                    <label className="input-group-text">Image Size:</label>
+                    <input className="form-control" type="text" id="imageSize" name="imageSize" value={question.imagesize} readOnly />
+                  </div>
+                </div>
+              )}
+
+              <div className="input-group mb-3">
+                <label className="input-group-text">Instruction:</label>
+                <textarea className="form-control" id="instruction" name="instruction" value={question.instruction} readOnly />
+              </div>
+              {question.response && question.response.length > 0 ? <div className="input-group mb-3">
                 {promptData.type === 'Edit' || promptData.type === 'Completitions' ? (
                   question.response.map((response, index) => (
-                    <div className="container__box__group" key={index}>
-                      <label htmlFor={`response${index}`}>Response {index + 1}:</label>
-                      <textarea id={`response${index}`} name={`response${index}`} value={response?.trim()} readOnly />
+                    <div className="input-group mb-3" key={index}>
+                      <label className="input-group-text">Response {index + 1}:</label>
+                      <textarea className="form-control" id={`response${index}`} name={`response${index}`} value={response?.trim()} readOnly />
                     </div>
                   ))) : (question.response.map((url, index) => (
-                    <div className="container__box__group" key={index}>
-                      <label htmlFor={`response${index}`}>Response {index + 1}:</label>
+                    <div className="input-group mb-3" key={index}>
+                      <label className={`response${index}`}>Response {index + 1}:</label>
                       <img src={url} alt={index + 1} style={{ width: '200px', height: 'auto' }} />
                     </div>
                   ))

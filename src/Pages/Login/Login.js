@@ -29,13 +29,13 @@ export const Login = () => {
       <div className="containerLogin__box">
         <h2>Login</h2>
         <form onSubmit={handleLogin}>
-          <div className="containerLogin__box__group">
-            <label htmlFor="user">Email</label>
-            <input type="text" id="user" name="user" value={username} onChange={(e) => SetUsername(e.target.value)} required />
+          <div className="input-group mb-3">
+            <label className="input-group-text">Email</label>
+            <input className="form-control" type="text" id="user" name="user" value={username} onChange={(e) => SetUsername(e.target.value)} required />
           </div>
-          <div className="containerLogin__box__group">
-            <label htmlFor="password">Password</label>
-            <input type="password" id="password" name="password" value={password} onChange={(e) => SetPassword(e.target.value)} required />
+          <div className="input-group mb-3">
+            <label className="input-group-text">Password</label>
+            <input className="form-control" type="password" id="password" name="password" value={password} onChange={(e) => SetPassword(e.target.value)} required />
           </div>
           <button type="submit" >Login</button>
         </form>

@@ -1,41 +1,50 @@
-.checkbox__container {
+.selector {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+    border-radius: 1rem;
+    border-color: rgba(82, 65, 155, 0.593);
+    //box-shadow: 0 4px 12px rgba(82, 65, 155, 0.593);
+    padding: 1.25rem;
+    width: 90%;
 
-    &__tag {
-        width: 30%;
-        margin-bottom: 2%;
-        margin-right: 2%;
-        background-color: rgb(255, 254, 254);
-        box-shadow: 0 4px 12px rgba(82, 65, 155, 0.593);
-        border-radius: 1rem;
+    &__combobox {
+        margin-bottom: 10px;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 20rem;
+    }
 
-        label {
-            display: flex;
-            align-items: center;
-            margin-bottom: 5px;
+    &__tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        width: auto;
 
-            input[type="checkbox"] {
-                margin-right: 5px;
+        &__tag {
+            display: inline-block;
+            padding: 0 25px;
+            height: 50px;
+            font-size: 16px;
+            line-height: 50px;
+            border-radius: 25px;
+            background-color: #ffffff;
+            border: 1px solid #ffffff;
+            box-shadow: 0 4px 12px rgba(82, 65, 155, 0.593);
+
+            &__closebtn {
+                padding-left: 10px;
+                color: #888;
+                font-weight: bold;
+                float: right;
+                font-size: 20px;
+                cursor: pointer;
             }
-        }
 
-        &__sub {
-            margin-top: 10px;
-            padding-left: 20px;
-            list-style-type: none;
-
-            li {
-                label {
-                    display: flex;
-                    align-items: center;
-                    margin-bottom: 5px;
-
-                    input[type="checkbox"] {
-                        //margin-right: 5px;
-                        margin-left: 0; // Ajusta el margen izquierdo a 0 para acercar el checkbox a la izquierda
-                    }
-                }
+            :hover {
+                color: #000;
             }
         }
     }

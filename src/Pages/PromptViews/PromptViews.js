@@ -35,14 +35,22 @@ export function PromptViews() {
     }
 
     const onDelete = (promptId) => {
-        PromptsDelete(promptId,userDelete);
+        PromptsDelete(promptId, userDelete);
         setPrompts(prompts.filter((prompt) => prompt._id !== promptId));
     }
     return (
         <div className="container_table">
-            <button onClick={() => navigate(`/promptnew`)}>New</button>
+            <nav class="navbar bg-body-tertiary">
+                <div class="container-fluid">
+                    <button onClick={() => navigate(`/promptnew`)}><i class="fa-solid fa-file-circle-plus fs-xl" style={{color: '#ffffff',}}/></button>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+            </nav>
+
             <PromptTable prompts={prompts} onView={onView} onEdit={onEdit} onDelete={onDelete} />
-            <button onClick={() => navigate(`/promptnew`)}>New</button>
         </div>
     )
 }

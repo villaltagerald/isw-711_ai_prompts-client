@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from "react-router-dom";
+import Spinner from '../../Components/Spinner/Spinner';
 
 import './Verification.scss';
 import { VerifiedUser } from '../../Datos/VerificationAuto/VerifiedUser';
@@ -44,16 +45,19 @@ export const Verification = () => {
   return (
     <div className="verification-container">
       <div className="verification-content">
-        {verificationStatus === 'verifying' && <p>Verificando...</p>}
+        {verificationStatus === 'verifying' && <><Spinner/> <p>Verificando...</p></>}
         {verificationStatus === 'success' && (
           <>
+          <i class="fa-solid fa-circle-check fa-beat fa-2xl" style={{color: '#0fdb38',}}></i>
             <p>Verificación exitosa</p>
             <button onClick={handleReturnToLogin}>Volver al Login</button>
           </>
         )}
         {verificationStatus === 'failed' && (
           <>
+          <i class="fa-solid fa-circle-xmark fa-beat fa-2xl" style={{color: '#d92612',}}></i>
             <p>Verificación fallida</p>
+            <span class="bi bi-patch-check-fill"/>
             <button onClick={handleReturnToLogin}>Volver al Login</button>
           </>
         )}
