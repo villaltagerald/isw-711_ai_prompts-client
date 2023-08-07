@@ -11,9 +11,11 @@ import { CompletitionPost } from '../../Datos/OpenAi/CompletitionPost';
 //Estilo
 import './PromptEdit.scss';
 import Spinner from '../../Components/Spinner/Spinner';
+import { AlertMessage } from '../../Components/AlertMessage/AlertMessage';
 
 export function PromptEdit() {
 
+  const [showAlert, setShowAlert] = useState(false);
   const { promptId } = useParams();//ID PASADO POR URL
   const [questionsData, setQuestionsData] = useState([]);//ARREGLO PARA LAS RESPUESTAS
   const [isLoading, setIsLoading] = useState(false);
@@ -62,7 +64,7 @@ export function PromptEdit() {
 
   //RESIVE LA RESPUESTA DEL PATCH Y LA ACTUALIZA EN LAS VARIABLES
   const promptEdit = (respronsePrompt) => {
-    alert('Prompt edit');
+    setShowAlert(true);
     const { _id, name, type, tags, questions } = respronsePrompt;
     const updatedPromptData = {
       _id,
@@ -187,6 +189,7 @@ export function PromptEdit() {
 
   return (
     <div className="containerEdit">
+      {showAlert && (<AlertMessage showAlert={showAlert} setShowAlert={setShowAlert} message={"Prompts modified successfully"} variant={"success"} />)}
       <div className="containerEdit__box">
         <h2>Edit Prompt</h2>
         <form onSubmit={handleSubmit}>

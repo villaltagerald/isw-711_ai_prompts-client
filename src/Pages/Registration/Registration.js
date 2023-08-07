@@ -5,9 +5,12 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { AlertMessage } from '../../Components/AlertMessage/AlertMessage';
 
 export function Registration() {
 
+  const [showAlert, setShowAlert] = useState(false);
+  const [message, setMessage] = useState(false);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: '',
@@ -37,21 +40,29 @@ export function Registration() {
     event.preventDefault();
     if (formData.password === formData.repeatPassword) {
       const repontePostUser = await UserPost(formData);
-      const responseSendMail = await SendMail(repontePostUser);
-      if (responseSendMail == 200 && repontePostUser) {
-        navigate(`/signup_successfully`);
+      console.log(repontePostUser)
+      if (!repontePostUser.error) {
+        const responseSendMail = await SendMail(repontePostUser);
+        if (responseSendMail === 200) {
+          navigate(`/signup_successfully`);
+        }
+      } else {
+        setShowAlert(true);
+        setMessage(repontePostUser.error);
       }
     } else {
-      alert('Password do not match');
+      setShowAlert(true);
+      setMessage('Password do not match')
     }
   }
 
   return (
     <div className='container'>
+      {showAlert && (<AlertMessage showAlert={showAlert} setShowAlert={setShowAlert} message={message} variant={"danger"} />)}
       <h2>Registration User</h2>
       <form className='container__registration' onSubmit={handleSubmit}>
         <div className="input-group mb-3">
-          <label  className="input-group-text" id="basic-addon1">Email:</label >
+          <label className="input-group-text" id="basic-addon1">Email:</label >
           <input className="form-control" type="email" id="email" name="email" value={formData.email} onChange={handleChange} required />
         </div>
         <div className="input-group mb-3">
@@ -74,13 +85,12 @@ export function Registration() {
           <label className="input-group-text">Repeat Password:</label>
           <input className="form-control" type="password" id="repeatPassword" name="repeatPassword" value={formData.repeatPassword} onChange={handleChange} required />
         </div>
-        <div className="registration__box__twofa">
-          <label className="two_fa">Two authentication factors:</label>
-          <input type="checkbox" id="two_fa" name='two_fa' checked={formData.two_fa === true} onChange={handleStatusChange} />
-          {formData.two_fa === true ? 'Active' : 'Inactive'}
+        <div className="form-check form-switch">
+          <label className="two_fa">Two authentication factors</label>
+          <input className="form-check-input" type="checkbox" id="two_fa" name='two_fa' checked={formData.two_fa === true} onChange={handleStatusChange} />
         </div>
         <div className="registration__box__buttons">
-          <button type="submit">Guardar</button>
+          <button type="submit">Sign up</button>
         </div>
       </form>
     </div>

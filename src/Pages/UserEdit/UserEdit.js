@@ -6,8 +6,11 @@ import { UserPatch } from '../../Datos/User/UserPatch';
 import RegistrationForm from '../../Components/RegistrationForm/RegistrationForm';
 import './UserEdit.scss';
 
+import { AlertMessage } from '../../Components/AlertMessage/AlertMessage';
+
 export function UserEdit() {
 
+  const [showAlert, setShowAlert] = useState(false);
   const { userId } = useParams();
   const [formData, setFormData] = useState({
     email: '',
@@ -33,7 +36,7 @@ export function UserEdit() {
   }, [userId]);
 
   function userEdit() {
-    alert('User edit');
+    setShowAlert(true);
   }
 
   const handleChange = (e) => {
@@ -58,7 +61,11 @@ export function UserEdit() {
     }));
   };
 
+  
   return (
+    <>
+    {showAlert && (<AlertMessage showAlert={showAlert} setShowAlert={setShowAlert} message={"User successfully modified"} variant={"success"}/>)}
     <RegistrationForm titulo={"Edit User"} handleSubmit={handleSubmit} handleChange={handleChange} handleStatusChange={handleStatusChange} formData={formData} required={false} />
+    </>
   );
 }

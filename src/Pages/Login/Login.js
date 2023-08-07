@@ -2,13 +2,15 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../Redux/Actions/UserActions';
-
+import { AlertMessage } from '../../Components/AlertMessage/AlertMessage';
 import { SessionToken } from '../../Datos/Authorization/SessionToken';
 
 import './Login.scss';
 
 export const Login = () => {
 
+  const [showAlert, setShowAlert] = useState(false);
+  const [message, setMessage] = useState("");
   const navigate = useNavigate();
   const [username, SetUsername] = useState("");
   const [password, SetPassword] = useState("");
@@ -17,15 +19,19 @@ export const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     const autentResponse = await SessionToken(username, password);
-    if (autentResponse) {
-      sessionStorage.setItem("tokenSesion", autentResponse.token);
-      dispatch(setUser(autentResponse.name, autentResponse.permission[0].idPermission));
+    if (autentResponse.data) {
+      sessionStorage.setItem("tokenSesion", autentResponse.data.token);
+      dispatch(setUser(autentResponse.data.name, autentResponse.data.permission[0].idPermission));
       navigate('/', { replace: true });
+    } else {
+      setShowAlert(true);
+      setMessage(autentResponse.error);
     }
   };
 
   return (
     <div className="containerLogin">
+      {showAlert && (<AlertMessage showAlert={showAlert} setShowAlert={setShowAlert} message={message} variant={"danger"} />)}
       <div className="containerLogin__box">
         <h2>Login</h2>
         <form onSubmit={handleLogin}>

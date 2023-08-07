@@ -5,11 +5,7 @@ export function SessionToken(username, password) {
         const ajaxRequest = new XMLHttpRequest();
         ajaxRequest.addEventListener("load", (response) => {
             const taskResponse = JSON.parse(response.target.responseText);
-            if (response.target.status === 201) {
-                resolve(taskResponse.data);
-            } else {
-                alert(taskResponse.error);
-            }
+            resolve(taskResponse);
         });
         ajaxRequest.addEventListener("error", (error) => {
             reject(error); // Rechaza la promesa con el objeto de error

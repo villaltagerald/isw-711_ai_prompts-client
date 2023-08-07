@@ -2,11 +2,13 @@ import UserTable from "../../Components/UserTable/UserTable"
 import { UserGet } from "../../Datos/User/UserGet";
 import { UserDelete } from "../../Datos/User/UserDelete";
 import './UserViews.scss';
+import { AlertMessage } from "../../Components/AlertMessage/AlertMessage";
 
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export function UserViews() {
+    const [showAlert, setShowAlert] = useState(false);
     const [users, setUsers] = useState([]);
     const navigate = useNavigate();
 
@@ -24,7 +26,8 @@ export function UserViews() {
     }, []);
 
     const userDelete = () => {
-        alert('User delete');
+        setShowAlert(true);
+
     }
 
     const onView = (userId) => {
@@ -36,22 +39,17 @@ export function UserViews() {
     }
 
     const onDelete = (userId) => {
-        UserDelete(userId,userDelete);
+        UserDelete(userId, userDelete);
         setUsers(users.filter((user) => user._id !== userId));
     }
     //const users = GetCourse();
     //console.log(users); users, onView
     return (
         <div className="container_table">
-            <nav className="navbar bg-body-tertiary">
-                <div className="container-fluid">
-            <button onClick={() => navigate(`/usernew`)}><i className="fa-solid fa-file-circle-plus fs-xl" style={{color: '#ffffff',}}></i></button>
-                    <form className="d-flex" role="search">
-                        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                        <button className="btn btn-outline-success" type="submit">Search</button>
-                    </form>
-                </div>
-            </nav>
+            {showAlert && (<AlertMessage showAlert={showAlert} setShowAlert={setShowAlert} message={"User successfully deleted"} variant={"success"} />)}
+
+            <button onClick={() => navigate(`/usernew`)}><i className="fa-regular fa-square-plus fa-2xl" style={{ color: '#ffffff', }}></i></button>
+
             <UserTable users={users} onView={onView} onEdit={onEdit} onDelete={onDelete} />
         </div>
     )

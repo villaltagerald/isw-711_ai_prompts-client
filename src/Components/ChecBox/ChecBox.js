@@ -15,7 +15,7 @@ export function CheckBox({ formData, setFormData }) {
 
     const handleTagSelect = (event) => {
         const selectedTag = event.target.value;
-        if (!selectedTags.includes(selectedTag) && selectedTag!=='Selecciona un tag') {
+        if (selectedTag && !selectedTags.includes(selectedTag) ) {
             setSelectedTags([...selectedTags, selectedTag]);
             setFormData((prevFormData) => ({
                 ...prevFormData,

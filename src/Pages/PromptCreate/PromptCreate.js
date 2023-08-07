@@ -4,9 +4,11 @@ import './PromptCreate.scss';
 
 import { CheckBox } from '../../Components/ChecBox/ChecBox';
 import PromptsPost from '../../Datos/Prompts/PromptsPost';
+import { AlertMessage } from '../../Components/AlertMessage/AlertMessage';
 
 export function PromptCreate() {
     //OBJETO SEGUNDARIO
+    const [showAlert, setShowAlert] = useState(false);
     const [question, setQuestion] = useState({
         responseCount: 1,
         input: "",
@@ -50,7 +52,7 @@ export function PromptCreate() {
     };
 
     const createPrompt = () => {
-        alert('User Created');
+        setShowAlert(true);
         setQuestion({
             responseCount: 1,
             input: "",
@@ -76,6 +78,7 @@ export function PromptCreate() {
 
     return (
         <div className="container">
+            {showAlert && (<AlertMessage showAlert={showAlert} setShowAlert={setShowAlert} message={"Prompts created successfully"} variant={"success"} />)}
             <div className="container__prompt">
                 <h2>Add new Prompt</h2>
                 <form onSubmit={handleSubmit}>

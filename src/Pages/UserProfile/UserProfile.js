@@ -3,9 +3,11 @@ import React, { useState, useEffect } from 'react';
 import { UserGetProfile } from '../../Datos/User/UserGetProfile';
 import { UserPatch } from '../../Datos/User/UserPatch';
 import './UserProfile.scss';
+import { AlertMessage } from '../../Components/AlertMessage/AlertMessage';
 
 export const UserProfile = () => {
 
+    const [showAlert, setShowAlert] = useState(false);
     const [formData, setFormData] = useState({
         _id: "",
         email: '',
@@ -31,7 +33,7 @@ export const UserProfile = () => {
     }, []);
 
     function userEdit() {
-        alert('User edit');
+        setShowAlert(true);
     }
 
     const handleChange = (e) => {
@@ -60,6 +62,7 @@ export const UserProfile = () => {
 
     return (
         <div className='container'>
+            {showAlert && (<AlertMessage showAlert={showAlert} setShowAlert={setShowAlert} message={"Profile modified successfully"} variant={"success"} />)}
             <h2>Profile Edition</h2>
             <form className='container__registration' onSubmit={handleSubmit}>
                 <div className="input-group mb-3">

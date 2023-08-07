@@ -1,0 +1,27 @@
+.app-container {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: flex-end;
+  position: fixed;
+  bottom: 1.25rem; /* 20px in rem */
+  right: 1.25rem; /* 20px in rem */
+  z-index: 9999;
+}
+
+.custom-alert {
+  transition: transform 0.5s ease-out;
+  transform: translateY(100%);
+  width: 18.75rem; /* 300px in rem */
+  margin-bottom: 0.625rem; /* 10px in rem */
+
+  &.show {
+    transform: translateY(0);
+  }
+}
+
+
+
+
+
+
+  

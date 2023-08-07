@@ -3,10 +3,12 @@ import React, { useState } from 'react';
 import UserPost from '../../Datos/User/UserPost';
 import RegistrationForm from '../../Components/RegistrationForm/RegistrationForm';
 import './NewUser.scss';
+import { AlertMessage } from '../../Components/AlertMessage/AlertMessage';
 
 export function NewUser() {
   //const [varified, setVarified] = useState(false); // Estado inicial: 'pending'
   //const [data, setData] = useState({});
+  const [showAlert, setShowAlert] = useState(false);
   const [formData, setFormData] = useState({
     email: '',
     first_name: '',
@@ -18,7 +20,7 @@ export function NewUser() {
   });
 
   function userCreated() {
-    alert('User created');
+    setShowAlert(true);
     setFormData({
       email: '',
       first_name: '',
@@ -57,6 +59,9 @@ export function NewUser() {
 
 
   return (
-    <RegistrationForm titulo={"Add User"} handleSubmit={handleSubmit} handleChange={handleChange} handleStatusChange={handleStatusChange} formData={formData} required={true} />
+    <>
+      {showAlert && (<AlertMessage showAlert={showAlert} setShowAlert={setShowAlert} message={"User created successfully"} variant={"success"} />)}
+      <RegistrationForm titulo={"Add User"} handleSubmit={handleSubmit} handleChange={handleChange} handleStatusChange={handleStatusChange} formData={formData} required={true} />
+    </>
   );
 }
