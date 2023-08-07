@@ -22,7 +22,9 @@ import { PromptViews } from './Pages/PromptViews/PromptViews';
 import { PromptCreate } from './Pages/PromptCreate/PromptCreate';
 import { PromptView } from './Pages/PromptView/PromptView';
 import { PromptEdit } from './Pages/PromptEdit/PromptEdit';
-//import ValidateToken from './Datos/Authorization/ValidateToken';
+//RESET PASSWORD
+import { ResetPassword } from './Pages/ResetPassword/ResetPassword';
+import { NewPassword } from './Pages/NewPassword/NewPassword';
 
 
 function App() {
@@ -72,6 +74,8 @@ function App() {
   const PublicRegistration =PublicRoute(Registration);
   const PublicRegistrationSuccess =PublicRoute(RegistrationSuccess);
   const PublicVerification =PublicRoute(Verification);
+  const PublicResetPassword =PublicRoute(ResetPassword);
+  const PublicNewPassword =PublicRoute(NewPassword);
   
   const router = createBrowserRouter([
     {
@@ -129,8 +133,16 @@ function App() {
       element: <PublicLogin />,
     },
     {
-      path: "verification/:validationCode",
+      path: "/verification/:validationCode",
       element: <PublicVerification />,
+    },
+    {
+      path: "/reset-password",
+      element: <PublicResetPassword />,
+    },
+    {
+      path: "/reset-password/:resetcode",
+      element: <PublicNewPassword />,
     },
     {
       path: "/unauthorized",

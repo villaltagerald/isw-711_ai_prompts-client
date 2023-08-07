@@ -43,6 +43,7 @@ export const Login = () => {
             <label className="input-group-text">Password</label>
             <input className="form-control" type="password" id="password" name="password" value={password} onChange={(e) => SetPassword(e.target.value)} required />
           </div>
+        <p> Forgot your password? <Link to="/reset-password">Reset it here</Link>.</p>
           <button type="submit" >Login</button>
         </form>
         <p className="signup-link">
