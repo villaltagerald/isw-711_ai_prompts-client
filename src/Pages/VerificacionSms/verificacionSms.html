@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verificación en Dos Pasos</title>
+  <link rel="stylesheet" href="stylesAutenticarSms.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Verificación en Dos Pasos</h2>
+    <p>Ingresa el código que se envió por mensaje SMS:</p>
+    <input type="text" id="verificationCode" placeholder="Código de Verificación">
+    <button onclick="verifyCode()">Verificar</button>
+  </div>
+
+  <script>
+    function verifyCode() {
+      var verificationCode = document.getElementById("verificationCode").value;
+      // Lógica de verificación aquí
+      alert("Código verificado: " + verificationCode);
+    }
+  </script>
+</body>
+</html>
