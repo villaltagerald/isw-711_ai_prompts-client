@@ -9,6 +9,8 @@ import Unauthorized from './Pages/Unauthorized/Unauthorized';
 //COMPONENTES GENERALES
 import { Registration } from './Pages/Registration/Registration';
 import { Login } from './Pages/Login/Login';
+//Autenticacion en dos pasos
+import { AutentificarFA } from './Pages/AutentificarFA/AutentificarFA';
 //COMPONENTES DE USUARIOS
 import { NewUser } from './Pages/NewUser/NewUser';
 import { UserViews } from './Pages/UserViews/UserViews';
@@ -76,6 +78,7 @@ function App() {
   const PublicVerification =PublicRoute(Verification);
   const PublicResetPassword =PublicRoute(ResetPassword);
   const PublicNewPassword =PublicRoute(NewPassword);
+  const PublicAutenticarFA=PublicRoute(AutentificarFA);
   
   const router = createBrowserRouter([
     {
@@ -131,6 +134,10 @@ function App() {
     {
       path: "/login",
       element: <PublicLogin />,
+    },
+    {
+      path: "/autenticartwofa/:userid",
+      element: <PublicAutenticarFA />,
     },
     {
       path: "/verification/:validationCode",

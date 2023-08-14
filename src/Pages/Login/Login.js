@@ -19,14 +19,18 @@ export const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     const autentResponse = await SessionToken(username, password);
+    console.log(autentResponse);
     if (autentResponse.data) {
       sessionStorage.setItem("tokenSesion", autentResponse.data.token);
       dispatch(setUser(autentResponse.data.name, autentResponse.data.permission[0].idPermission));
       navigate('/', { replace: true });
-    } else {
+    } else if (autentResponse.two_fa) { 
+      navigate(`/autenticartwofa/${autentResponse.id}`, { replace: true });
+    } 
+      else {
       setShowAlert(true);
       setMessage(autentResponse.error);
-    }
+      }
   };
 
   return (
@@ -43,7 +47,7 @@ export const Login = () => {
             <label className="input-group-text">Password</label>
             <input className="form-control" type="password" id="password" name="password" value={password} onChange={(e) => SetPassword(e.target.value)} required />
           </div>
-        <p> Forgot your password? <Link to="/reset-password">Reset it here</Link>.</p>
+          <p> Forgot your password? <Link to="/reset-password">Reset it here</Link>.</p>
           <button type="submit" >Login</button>
         </form>
         <p className="signup-link">
