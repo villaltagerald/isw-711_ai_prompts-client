@@ -40,7 +40,7 @@ export function Registration() {
     event.preventDefault();
     if (formData.password === formData.repeatPassword) {
       const repontePostUser = await UserPost(formData);
-      console.log(repontePostUser)
+      //console.log(repontePostUser)
       if (!repontePostUser.error) {
         const responseSendMail = await SendMail(repontePostUser);
         if (responseSendMail === 200) {
@@ -62,7 +62,7 @@ export function Registration() {
       <h2>Registration User</h2>
       <form className='container__registration' onSubmit={handleSubmit}>
         <div className="input-group mb-3">
-          <label className="input-group-text" id="basic-addon1">Email:</label >
+          <label className="input-group-text">Email:</label >
           <input className="form-control" type="email" id="email" name="email" value={formData.email} onChange={handleChange} required />
         </div>
         <div className="input-group mb-3">

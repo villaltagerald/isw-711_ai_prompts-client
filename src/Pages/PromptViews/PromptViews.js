@@ -70,10 +70,10 @@ export function PromptViews() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if ((showNameInput || showTagsInput || showTypeInput)) {
-            console.log(selectedOpcionTags)
+            //console.log(selectedOpcionTags)
             if ((nameValue || (typeValue && typeValue !== "") || selectedOpcionTags.length > 0)) {
                 const promptResponse = await PromptsSearch(showNameInput ? nameValue : null, showTypeInput ? typeValue : null, showTagsInput ? selectedOpcionTags : null);
-                console.log(promptResponse.data.searchPrompt);
+                //console.log(promptResponse.data.searchPrompt);
                 setPrompts(promptResponse.data.searchPrompt);
             }
         } else {

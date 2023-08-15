@@ -19,7 +19,6 @@ export const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     const autentResponse = await SessionToken(username, password);
-    console.log(autentResponse);
     if (autentResponse.data) {
       sessionStorage.setItem("tokenSesion", autentResponse.data.token);
       dispatch(setUser(autentResponse.data.name, autentResponse.data.permission[0].idPermission));
