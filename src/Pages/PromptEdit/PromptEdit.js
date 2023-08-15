@@ -252,12 +252,12 @@ export function PromptEdit() {
                   {promptData.type === 'Edit' || promptData.type === 'Completitions' ? (
                     question.response.map((response, index) => (
                       <div className="input-group mb-3" key={index}>
-                        <label className={`response${index}`}>Response {index + 1}:</label>
+                        <label className="input-group-text">Response {index + 1}:</label>
                         <textarea className="form-control" id={`response${index}`} name={`response${index}`} value={response?.trim()} readOnly />
                       </div>
                     ))) : (question.response.map((url, index) => (
                       <div className="input-group mb-3" key={index}>
-                        <label className={`response${index}`}>Response {index + 1}:</label>
+                        <label className="input-group-text">Response {index + 1}:</label>
                         <img src={url} alt={index + 1} style={{ width: '200px', height: 'auto' }} />
                       </div>
                     ))

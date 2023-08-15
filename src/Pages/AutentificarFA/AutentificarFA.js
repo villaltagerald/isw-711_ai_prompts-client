@@ -4,6 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { AutentifyFA } from '../../Datos/AutentificarFA/AutentificarFA';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../../Redux/Actions/UserActions';
+import { AlertMessage } from '../../Components/AlertMessage/AlertMessage';
 
 export function AutentificarFA() {
     const [codes, setCodes] = useState(['', '', '', '', '', '']);
@@ -11,6 +12,9 @@ export function AutentificarFA() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const codeInputs = useRef([]);
+    const [showAlert, setShowAlert] = useState(false);
+    const [message, setMessage] = useState("");
+    const [typeAlert, setTypeAlert] = useState("");
 
     const handleCodeChange = (index, value) => {
         const newCodes = [...codes];
@@ -30,11 +34,16 @@ export function AutentificarFA() {
             sessionStorage.setItem('tokenSesion', autentResponse.data.token);
             dispatch(setUser(autentResponse.data.name, autentResponse.data.permission[0].idPermission));
             navigate('/', { replace: true });
+        } else if(autentResponse.error) {
+            setShowAlert(true);
+            setMessage(autentResponse.error);
+            setTypeAlert("danger");
         }
     };
 
     return (
         <div className="container__fa">
+            {showAlert && (<AlertMessage showAlert={showAlert} setShowAlert={setShowAlert} message={message} variant={typeAlert} />)}
             <div className="container__fa__two">
                 <h2>Two Step Authentication </h2>
                 <p>Please enter the code that was sent to you by SMS</p>
