@@ -37,16 +37,16 @@ export const Verification = () => {
         {verificationStatus === 'verifying' && <><Spinner/> <p>Verificando...</p></>}
         {verificationStatus === 'success' && (
           <>
-          <i class="fa-solid fa-circle-check fa-beat fa-2xl" style={{color: '#0fdb38',}}></i>
+          <i className="fa-solid fa-circle-check fa-beat fa-2xl" style={{color: '#0fdb38',}}></i>
             <p>Verificación exitosa</p>
             <button onClick={handleReturnToLogin}>Volver al Login</button>
           </>
         )}
         {verificationStatus === 'failed' && (
           <>
-          <i class="fa-solid fa-circle-xmark fa-beat fa-2xl" style={{color: '#d92612',}}></i>
+          <i className="fa-solid fa-circle-xmark fa-beat fa-2xl" style={{color: '#d92612',}}></i>
             <p>Verificación fallida</p>
-            <span class="bi bi-patch-check-fill"/>
+            <span className="bi bi-patch-check-fill"/>
             <button onClick={handleReturnToLogin}>Volver al Login</button>
           </>
         )}
